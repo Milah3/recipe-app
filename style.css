@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Gluten:wght@100;400;600&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+    background: #2193b0; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to left,
+        #6dd5ed,
+        #2193b0
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+            to left,
+            #6dd5ed,
+            #2193b0
+            ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    min-height: 100vh;
+  /* font-family: "Gluten", cursive; */
+
+
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    /* background-color: rgba(53, 52, 52, 0.068);; */
+    background-color: rgba(0, 128, 0, 0.486);
+}
+
+header input {
+    background-color: #eee;
+    border: none;
+    border-radius: 3px;
+    padding: 0.5rem 1rem;
+    /* font-family: inherit; */
+}
+
+header button {
+    background-color: transparent;
+    color: #eee;
+    border: none;
+    font-size: 1.5rem;
+    margin-left: 10px;
+}
+
+.mobile-container {
+  background-color: white;
+  box-shadow: 0 0 10px red;
+  overflow: hidden;
+  /* width: 50vh; */
+  width: 400px;
+}
+
+img {
+  /* width: 30vh; */
+  max-width: 100%;
+}
+
+.fav-container {
+    /* display: flex; */
+    background-color: #a8dce9;
+    padding: 0.25rem 1rem;
+    text-align: center;
+}
+
+.fav-meals {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: auto;
+    list-style-type: none;
+    padding: 0;
+    /* justify-content: space-evenly; */
+    /* align-items: center; */
+}
+
+.fav-meals li img {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 10px 2px #ffb0b01a;
+
+}
+
+.fav-meals li {
+    width: 85px;
+}
+
+.fav-meals li span {
+    font-size: 0.9rem;
+}
+
+.meal {
+    margin: 1.5rem;
+    /* border: 3px solid black; */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px 2px #3333331a;
+}
+
+.meal-header {
+    position: relative;
+}
+
+.meal-header .random {
+    position: absolute;
+    top: 1rem;
+    background-color: white;
+    padding: 0.25rem;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.meal-header img {
+    object-fit: cover;
+    height: 250px;
+    width: 100%;
+}
+
+.meal-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.meal-body .fav-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: grey;
+    cursor: pointer;
+}
+
+.meal-body .fav-btn:active {
+    color: purple;
+}    
