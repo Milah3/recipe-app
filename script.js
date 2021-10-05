@@ -1,6 +1,5 @@
 async function getRandomMeal() {
    const randomMeal = await fetch('www.themealdb.com/api/json/v1/1/random.php');
-   randomMeal.
 }
 
 async function getMealById(id) {
