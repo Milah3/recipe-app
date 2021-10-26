@@ -52,15 +52,12 @@ function addMeal(mealData, random = false) {
        </button>
    </div> 
 </div>`;
-
 }
 
-function toggleHeart() {
-    const btn = document.getElementById(`${mealData.idMeal}`);
-    btn.addEventListener('click', () => {
-        // if ()
+function toggleHeart(id) {
+        // var x = this;
+        const btn = document.getElementById(id);
         btn.style.color == 'purple' ? btn.style.color = 'grey': btn.style.color = 'purple';
-    })
 }
 
 // if (i < 5) {
@@ -73,7 +70,7 @@ function toggleHeart() {
 //   <div class="meal-body">
 //       <h4>${meal.strMeal}</h4>
 //       <button class="fav-btn">
-//           <i class="fas fa-heart" ></i>
+//           <i class="fas fa-heart"> </i>
 //       </button>
 //   </div>`;
 
