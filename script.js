@@ -73,13 +73,13 @@ function toggleHeart(id) {
   ((btn.style.color == "" | btn.style.color == 'grey')
     ? () => {
         btn.style.color = "purple"
-        addMealToLS(id);
         appendToFav(id);
-        console.log('appended to fav');
+        addMealToLS(id);
     } 
     : () => {
-      removeMealFromLS(id);
       btn.style.color = "grey";
+      removeFromFav(id);
+      removeMealFromLS(id);
     })();
   }
 
@@ -111,7 +111,9 @@ function removeMealFromLS(mealId) {
 
 }
 
-async function appendToFav(id) {
+function appendToFav(id) {
+    let fav_class = document.querySelector('.fav-meals');
+    
     // Get meal data
     const mealData = getMealById(id).then(x => {
         meal = x[0];
@@ -127,18 +129,37 @@ async function appendToFav(id) {
         meal_doc.appendChild(meal_img);
         meal_doc.appendChild(meal_spn);
       
-        let fav_class = document.querySelector('.fav-meals');
 
         if (!fav_class.innerHTML.includes(meal_doc.innerHTML)) {
           fav_class.appendChild(meal_doc);
         }
         else if (fav_class.innerHTML.includes(meal_doc.innerHTML)) {
+          // window.alert('Meal already in favorites');
           console.log('Included');
         }
-
     });
-
 }
+
+function removeFromFav(id) {
+
+  // find Meal that matches id from LS
+  let ids = getMealsFromLS()
+  
+  console.log('ids', ids);
+
+  // find name of that meal  
+  meal_name = getMealById(id).then(meal => {
+    meal_name = meal[0].strMeal
+  })
+  
+  // get html for fav class.
+  
+    const fav_class = document.querySelector('.fav-meals');
+
+    // delete html that matches name of the meal
+      fav_class.children[i].innerHTML = '';
+}
+
 
 // Code for listing fewer meals
 // if (i < 5) {
