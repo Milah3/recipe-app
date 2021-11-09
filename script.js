@@ -80,7 +80,6 @@ function toggleHeart(id) {
     : () => {
       removeMealFromLS(id);
       btn.style.color = "grey";
-
     })();
   }
 
@@ -120,7 +119,7 @@ async function appendToFav(id) {
         const meal_doc = document.createElement('li');
         const meal_img = document.createElement('img');
         const meal_spn = document.createElement('span');
-        
+
           meal_spn.innerText = meal.strMeal;
           meal_img.src = meal.strMealThumb;
 
@@ -130,7 +129,13 @@ async function appendToFav(id) {
       
         let fav_class = document.querySelector('.fav-meals');
 
-        fav_class.appendChild(meal_doc);
+        if (!fav_class.innerHTML.includes(meal_doc.innerHTML)) {
+          fav_class.appendChild(meal_doc);
+        }
+        else if (fav_class.innerHTML.includes(meal_doc.innerHTML)) {
+          console.log('Included');
+        }
+
     });
 
 }
