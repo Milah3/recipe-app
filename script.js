@@ -52,19 +52,18 @@ function addMeal(mealData, random = false) {
                meal.innerHTML = `... insert child elements here...`
    */
 
-  mealsEl.innerHTML += ` 
-   <div class="meal">
-   <div class="meal-header"> 
+  mealsEl.innerHTML += `
+   <div class="meal-container">
    ${random ? `<span class="random"> Random Recipe </span>` : ""}
        <img src="${mealData.strMealThumb}" alt="${mealData.strMeal}">
-   </div>
-   <div class="meal-body">
-      <h4>${mealData.strMeal}</h4>
-      <button class="fav-btn" id="${mealData.idMeal}" onclick="toggleHeart(${mealData.idMeal})">
+
+      <div class="meal-body">
+        <h4>${mealData.strMeal}</h4>
+        <button class="fav-btn" id="${mealData.idMeal}" onclick="toggleHeart(${mealData.idMeal})">
           <i class="fas fa-heart"></i>
-      </button>
-   </div>
-</div>`;
+        </button>
+      </div>
+    </div>`;
 }
 
 function toggleHeart(id) {
@@ -74,12 +73,10 @@ function toggleHeart(id) {
     ? () => {
         btn.style.color = "purple"
         appendToFav(id);
-        addMealToLS(id);
     } 
     : () => {
       btn.style.color = "grey";
       removeFromFav(id);
-      removeMealFromLS(id);
     })();
   }
 
@@ -112,52 +109,59 @@ function removeMealFromLS(mealId) {
 }
 
 function appendToFav(id) {
-    let fav_class = document.querySelector('.fav-meals');
+
+  // find all ids from ls storage
+  addMealToLS(id);
+  ids = getMealsFromLS();
+  PopulateFavs(ids);
+}
+
+function PopulateFavs(Ids) {
+  let fav_class = document.querySelector('.fav-meals');
     
+  Ids.forEach( (id) => {
     // Get meal data
     const mealData = getMealById(id).then(x => {
-        meal = x[0];
-        // Create element for new favorite meal
-        const meal_doc = document.createElement('li');
-        const meal_img = document.createElement('img');
-        const meal_spn = document.createElement('span');
+      meal = x[0];
 
-          meal_spn.innerText = meal.strMeal;
-          meal_img.src = meal.strMealThumb;
+      // Create element for new favorite meal
+      const meal_doc = document.createElement('li');
+      const meal_img = document.createElement('img');
+      const meal_spn = document.createElement('span');
 
-        // meal_doc.appendChild(meal_img, meal_spn);
-        meal_doc.appendChild(meal_img);
-        meal_doc.appendChild(meal_spn);
+        meal_spn.innerText = meal.strMeal;
+        meal_img.src = meal.strMealThumb;
+
+      // meal_doc.appendChild(meal_img, meal_spn);
+      meal_doc.appendChild(meal_img);
+      meal_doc.appendChild(meal_spn);
+    
+      if (!fav_class.innerHTML.includes(meal_doc.innerHTML)) {
+        fav_class.appendChild(meal_doc);
+      }
       
-
-        if (!fav_class.innerHTML.includes(meal_doc.innerHTML)) {
-          fav_class.appendChild(meal_doc);
-        }
-        else if (fav_class.innerHTML.includes(meal_doc.innerHTML)) {
-          // window.alert('Meal already in favorites');
-          console.log('Included');
-        }
-    });
+      else if (fav_class.innerHTML.includes(meal_doc.innerHTML)) {
+        // window.alert('Meal already in favorites');
+        console.log('Included');
+      }
+    })
+  })
 }
 
 function removeFromFav(id) {
-
-  // find Meal that matches id from LS
-  let ids = getMealsFromLS()
+  // let fav_class = document.querySelector('.fav-meals');
   
-  console.log('ids', ids);
+  document.querySelector('.fav-meals').innerHTML = `<ul class="fav-meals">
+  <li><img src="https://www.themealdb.com/images/ingredients/Lime.png" alt="Picture of a Lime">
+      <span> Lime </span></li>
+  <li><img src="https://www.themealdb.com/images/media/meals/1529443236.jpg" alt=""><span> Chicken </span></li>
+  <li><img src="https://www.themealdb.com/images/media/meals/1529443236.jpg" alt=""><span> Chicken </span></li>
+  <li><img src="https://www.themealdb.com/images/media/meals/uttuxy1511382180.jpg" alt=""><span> Pudding</span></li>
+</ul>`;
 
-  // find name of that meal  
-  meal_name = getMealById(id).then(meal => {
-    meal_name = meal[0].strMeal
-  })
-  
-  // get html for fav class.
-  
-    const fav_class = document.querySelector('.fav-meals');
-
-    // delete html that matches name of the meal
-      fav_class.children[i].innerHTML = '';
+  removeMealFromLS(id);
+  ids = getMealsFromLS()
+  PopulateFavs(ids);
 }
 
 

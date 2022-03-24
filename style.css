@@ -33,7 +33,7 @@ header {
     justify-content: center;
     padding: 1rem;
     /* background-color: rgba(53, 52, 52, 0.068);; */
-    background-color: rgba(0, 128, 0, 0.486);
+    background-color: #246469;
 }
 
 header input {
@@ -53,12 +53,20 @@ header button {
 }
 
 .mobile-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
   background-color: white;
-  box-shadow: 0 0 10px red;
+  /* box-shadow: 0 0 10px red; */
   overflow: hidden;
   /* width: 50vh; */
-  width: 400px;
+  width: 98vw;
 }
+
+/* .meals { //MEALS CONTAINER TO CHANGE WIDTH SIZE
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+} */
 
 img {
   /* width: 30vh; */
@@ -100,7 +108,10 @@ img {
     font-size: 0.9rem;
 }
 
-.meal {
+#meals {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
     margin: 1.5rem;
     /* border: 3px solid black; */
     border-radius: 10px;
@@ -108,11 +119,31 @@ img {
     box-shadow: 0 0 10px 2px #3333331a;
 }
 
-.meal-header {
-    position: relative;
+.meal-container {
+    display: grid;
+    gap: 0;
+    /* overflow: hidden; */
+    object-fit: contain;
+
 }
 
-.meal-header .random {
+.meal-img-container img {
+    object-fit: contain;
+    /* max-height: 150px; */
+    height: inherit;
+    width: 100%;
+}
+
+.meal-container img {
+    position: relative;
+    border-radius: 10px;
+    /* overflow: hidden; */
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    height: fit-content;
+}
+
+.meal-img-container .random {
     position: absolute;
     top: 1rem;
     background-color: white;
@@ -121,16 +152,17 @@ img {
     border-bottom-right-radius: 10px;
 }
 
-.meal-header img {
-    object-fit: cover;
-    height: 250px;
-    width: 100%;
-}
-
 .meal-body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #a8dce98e;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    /* height: 10%; */
 }
 
 .fav-btn {
