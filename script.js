@@ -1,12 +1,23 @@
-if (performance.navigation.TYPE_RELOAD == performance.navigation.type) {
-  localStorage.clear();
-  console.log('Page reloaded, storage cleared()');
-}
+let fav_div = document.querySelector('.fav-container');
+let fav_class = document.querySelector('.fav-meals');
 
-getMealsBySearch("cake");
 
-// getRandomMeal();
 
+function main() {
+  
+  if (performance.navigation.TYPE_RELOAD == performance.navigation.type) {
+    localStorage.clear();
+    console.log('Page reloaded, storage cleared()');
+    fav_div.style.display ='none';
+  }
+  
+  getMealsBySearch("b");
+    
+  // getRandomMeal();
+  
+}  
+
+main();
 
 async function getRandomMeal() {
   const resp = await fetch(
@@ -56,7 +67,6 @@ function addMeal(mealData, random = false) {
    <div class="meal-container">
    ${random ? `<span class="random"> Random Recipe </span>` : ""}
        <img src="${mealData.strMealThumb}" alt="${mealData.strMeal}">
-
       <div class="meal-body">
         <h4>${mealData.strMeal}</h4>
         <button class="fav-btn" id="${mealData.idMeal}" onclick="toggleHeart(${mealData.idMeal})">
@@ -68,7 +78,7 @@ function addMeal(mealData, random = false) {
 
 function toggleHeart(id) {
   const btn = document.getElementById(id);
-
+  
   ((btn.style.color == "" | btn.style.color == 'grey')
     ? () => {
         btn.style.color = "purple"
@@ -78,6 +88,13 @@ function toggleHeart(id) {
       btn.style.color = "grey";
       removeFromFav(id);
     })();
+
+    // If there's no favorite meal, remove fav-meal div
+    if (getMealsFromLS().length < 1) {
+      fav_div.style.display = 'none';
+    } else {
+      fav_div.style.display = 'inherit';
+    }
   }
 
 function addMealToLS(mealId) {
@@ -114,54 +131,72 @@ function appendToFav(id) {
   addMealToLS(id);
   ids = getMealsFromLS();
   PopulateFavs(ids);
+
 }
 
 function PopulateFavs(Ids) {
-  let fav_class = document.querySelector('.fav-meals');
-    
-  Ids.forEach( (id) => {
-    // Get meal data
-    const mealData = getMealById(id).then(x => {
-      meal = x[0];
-
-      // Create element for new favorite meal
-      const meal_doc = document.createElement('li');
-      const meal_img = document.createElement('img');
-      const meal_spn = document.createElement('span');
-
-        meal_spn.innerText = meal.strMeal;
-        meal_img.src = meal.strMealThumb;
-
-      // meal_doc.appendChild(meal_img, meal_spn);
-      meal_doc.appendChild(meal_img);
-      meal_doc.appendChild(meal_spn);
-    
-      if (!fav_class.innerHTML.includes(meal_doc.innerHTML)) {
-        fav_class.appendChild(meal_doc);
-      }
-      
-      else if (fav_class.innerHTML.includes(meal_doc.innerHTML)) {
-        // window.alert('Meal already in favorites');
-        console.log('Included');
-      }
-    })
-  })
-}
-
-function removeFromFav(id) {
   // let fav_class = document.querySelector('.fav-meals');
-  
-  document.querySelector('.fav-meals').innerHTML = `<ul class="fav-meals">
-  <li><img src="https://www.themealdb.com/images/ingredients/Lime.png" alt="Picture of a Lime">
-      <span> Lime </span></li>
-  <li><img src="https://www.themealdb.com/images/media/meals/1529443236.jpg" alt=""><span> Chicken </span></li>
-  <li><img src="https://www.themealdb.com/images/media/meals/1529443236.jpg" alt=""><span> Chicken </span></li>
-  <li><img src="https://www.themealdb.com/images/media/meals/uttuxy1511382180.jpg" alt=""><span> Pudding</span></li>
-</ul>`;
+    
+  // if (ids.length == 5) {
+  //   btn = document.createElement("button");
+  //   btn.type = 'submit';
+  //   btn.innerHTML = 'More'
+  //   fav_class.appendChild(btn);
+  // }
 
-  removeMealFromLS(id);
-  ids = getMealsFromLS()
-  PopulateFavs(ids);
+
+
+    Ids.forEach( (id) => {
+      // Get meal data
+      const mealData = getMealById(id).then(x => {
+        meal = x[0];
+  
+        // Create element for new favorite meal
+        const meal_doc = document.createElement('li');
+        const meal_img = document.createElement('img');
+        const meal_spn = document.createElement('span');
+  
+          meal_spn.innerText = meal.strMeal;
+          meal_img.src = meal.strMealThumb;
+  
+        // meal_doc.appendChild(meal_img, meal_spn);
+        meal_doc.appendChild(meal_img);
+        meal_doc.appendChild(meal_spn);
+      
+        if (!fav_class.innerHTML.includes(meal_doc.innerHTML)) {
+          fav_class.appendChild(meal_doc);
+        }
+        
+        else if (fav_class.innerHTML.includes(meal_doc.innerHTML)) {
+          // window.alert('Meal already in favorites');
+          console.log('Included');
+        }
+      })
+    })
+  }
+
+    
+
+function removeFromFav(id) {  
+  // document.querySelector('.fav-container').innerHTML = '';
+// document.querySelector('.fav-meals').innerHTML = `<ul class="fav-meals">
+//   <li><img src="https://www.themealdb.com/images/ingredients/Lime.png" alt="Picture of a Lime">
+//       <span> Lime </span></li>
+//   <li><img src="https://www.themealdb.com/images/media/meals/1529443236.jpg" alt=""><span> Chicken </span></li>
+//   <li><img src="https://www.themealdb.com/images/media/meals/1529443236.jpg" alt=""><span> Chicken </span></li>
+//   <li><img src="https://www.themealdb.com/images/media/meals/uttuxy1511382180.jpg" alt=""><span> Pudding</span></li>
+// </ul>`;
+
+
+  // document.querySelector('.fav-container').style.display = 'none';
+  // numFavs--;
+
+    removeMealFromLS(id);
+
+    ids = getMealsFromLS()
+    PopulateFavs(ids);
+  // }
+
 }
 
 

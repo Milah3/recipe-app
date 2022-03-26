@@ -1,0 +1,9 @@
+[]: Add remove function to favorites list
+[]: Add search functionality
+    a. []: Add a search not found page
+[]: Add about us page
+[]: Add pop-up modal for each searched item, depending on ID!
+    []: Hover text before click to open modal
+[]: Add text-overflow catch
+[]: Navbar mobile compatibility
+[]: Deploy!!! :)
