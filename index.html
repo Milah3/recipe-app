@@ -1,48 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe App</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
-    <div class="mobile-container"> 
-        <header style="align-items: center; justify-content: space-between;"> 
+    <div class="mobile-container">
+        <header class="header">
             <div class="div">
                 <!-- <i class="fa-solid fa-bowl-rice" style="color: white;"> Recipe App</i> -->
                 <!-- <i class="fa-solid fa-bowl-chopsticks"></i> -->
-                <h2 style="color: white;">Recipe App 
+                <h2 style="color: white;">Recipe App
                     <i class="fa-solid fa-cookie-bite"></i>
                 </h2>
-                
+
             </div>
             <div class="nav">
                 <button>Recipe</button>
                 <button>My Meals</button>
                 <button>About Us</button>
             </div>
-            <div class="div">
-                <input type="text" >
-                <button id="search"><i class="fas fa-search"></i></button>
+            <div class="search_nav">
+                <input id="search_input" type="text" placeholder="Search for a recipe">
+                <button id="search_btn" type="button"><i class="fas fa-search" onsubmit="searchMeals()"></i></button>
             </div>
         </header>
-        
+
         <div class="fav-container">
             <h3> Favorite Meals</h3>
             <div class="fav-meals">
-                
+
             </div>
-            
-            </div>
-            <div class="h1" style="font-size: 30px;font-weight: bolder; margin-top: 50px; display: flex; justify-content: center;">Browse our recipes</div>
-            <div class="meals-container" id="meals">
-                
-            </div>
+
         </div>
-        
-    </body>
-    <script src="script.js"></script>
-    </html>
+        <div class="section">
+            <div class="h1" id="browse_text"
+                style="font-size: 30px;font-weight: bolder; display: flex; justify-content: center;">Browse
+                our recipes</div>
+            <div class="meals-container" id="meals">
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+<script src="script.js"></script>
+
+</html>

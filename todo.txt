@@ -1,4 +1,4 @@
-[]: Add remove function to favorites list
+[X]: Add remove function to favorites list
 []: Add search functionality
     a. []: Add a search not found page
 []: Add about us page
