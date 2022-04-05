@@ -1,5 +1,7 @@
 # Recipe App
 
+[Go to site](https://recipe-app-eew.pages.dev/)
+
 I'm actually really proud of how this project turned it. I was able to learn a lot about how to retreive data using the fetch and asynchronously use it in your code.
 It's pretty epic. :).
 
