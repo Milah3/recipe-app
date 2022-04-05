@@ -15,7 +15,7 @@
 <body>
     <div class="mobile-container">
         <header class="header">
-            <div class="div">
+            <div class="div" onclick="__init()" style="cursor: pointer;">
                 <!-- <i class="fa-solid fa-bowl-rice" style="color: white;"> Recipe App</i> -->
                 <!-- <i class="fa-solid fa-bowl-chopsticks"></i> -->
                 <h2 style="color: white;">Recipe App
@@ -23,17 +23,18 @@
                 </h2>
 
             </div>
-            <div class="nav">
+            <!-- <div class="nav">
                 <button>Recipe</button>
                 <button>My Meals</button>
                 <button>About Us</button>
-            </div>
+            </div> -->
             <div class="search_nav">
                 <input id="search_input" type="text" placeholder="Search for a recipe">
                 <button id="search_btn" type="button"><i class="fas fa-search" onsubmit="searchMeals()"></i></button>
             </div>
         </header>
-
+        <div>
+        </div>
         <div class="fav-container">
             <h3> Favorite Meals</h3>
             <div class="fav-meals">
@@ -42,10 +43,21 @@
 
         </div>
         <div class="section">
-            <div class="h1" id="browse_text"
-                style="font-size: 30px;font-weight: bolder; display: flex; justify-content: center;">Browse
-                our recipes</div>
+            <h1 id="browse_text">Browse our recipes</h1>
             <div class="meals-container" id="meals">
+                <div id="first">
+                    <i class="fas fa-heart"> We have all kinds of recipes
+                        here. Choose your favorites and heart them</i>
+                </div>
+
+            </div>
+            <div class="meal-info-container" id="meal-container-popup">
+                <div class="meal-info" id="meal-info">
+                </div>
+            </div>
+            <div class="cntrBtn">
+                <button onclick="refreshRandom()" class="randomBtn">Try a random recipe</button>
+
             </div>
 
         </div>
