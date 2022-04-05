@@ -26,8 +26,8 @@ header {
 	padding-right: 20px;
 
 }
-/* 
-@media screen and (max-width: 700px) {
+
+/* @media screen and (max-width < 700px) {
 	.nav {
 		display: none;
 	}
@@ -374,6 +374,7 @@ img {
 	overflow: scroll;
 	
 }
+
 
 .meal-info h1 {
 	text-align: center;
