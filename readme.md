@@ -17,3 +17,11 @@ It's a website that retreives JSON data from the food API then displays the data
 [X]: Add pop-up modal for each searched item, depending on ID!
 [X]: Hover text before click to open modal
 [X]: Deploy!!! :)
+
+# Final thoughts
+
+There's still lots of features that can be added, but this project has taught me a lot and I leave it with a better understanding of how to write and use asynchronous functions than before.
+
+# Thanks
+
+Thanks to @Florinpop17 for his youtube tutorials that helped me accomplish this!
